@@ -14,7 +14,7 @@
     align-items: center;
     width: 100vw;
     height: 70vh;
-    background-image: url(billboard.jpg);
+    background-image: url('/billboard.jpg');
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: darken;
     background-repeat: no-repeat;
