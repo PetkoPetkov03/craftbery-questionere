@@ -1,42 +1,108 @@
-
-import { useNavigate, useSearchParams } from "react-router"
+import {
+  useNavigate,
+  useSearchParams,
+  type NavigateFunction,
+} from "react-router";
+import Container from "~/assets/components/Container";
 import type { AnswerdQuestion, Questions } from "~/types/questions";
+import "./quiz.css";
+import { useEffect } from "react";
+import ProgressBar from "~/assets/components/Progress";
 
 type QuizProps = {
-    questionEntity: Questions,
-    answers: {[id: number]: string}
-    updateAnswer: (id: number, answer: string) => void;
-}
+  questionEntity: Questions;
+  answers: { [id: number]: string };
+  updateAnswer: (id: number, answer: string) => void;
+};
 
 const getCharVal = (char: string, i: number) => {
-    return String.fromCharCode(char.charCodeAt(0)+i); 
-}
+  return String.fromCharCode(char.charCodeAt(0) + i);
+};
+
+const quitQuiz = () => {
+  window.location.replace("/");
+};
 
 const Quiz = (props: QuizProps) => {
-    const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
-    const questionNum: number = Number(searchParams.get("question"));
+  const questionNum: number = Number(searchParams.get("question"));
 
-    const question = props.questionEntity.questions[questionNum-1];
+  const question = props.questionEntity.questions[questionNum - 1];
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      (Object.keys(props.answers).length === 0 && questionNum > 1) ||
+      questionNum !== Object.keys(props.answers).length
+    ) {
+      navigate("/quiz?question=1");
+    }
+  }, [props.answers]);
   return (
-    <div>
-        {question.text}
-
-        {question.answers.map((answer, i) => {
-            return (
-                <div key={i} onClick={() => props.updateAnswer(question.id, answer)}>
-                    {getCharVal('a', i)} {answer}
-                    {props.answers[question.id] == answer ? "picked" : null}
+    <Container>
+      <div className="quiz-wrapper">
+        <div className="quiz-container">
+          <div className="question-title">{question.text}</div>
+          <div className="answer-module">
+            {question.answers.map((answer, i) => {
+              return (
+                <div
+                  className={`answer ${
+                    props.answers[question.id] == answer ? "picked" : null
+                  }`}
+                  key={i}
+                  onClick={() => props.updateAnswer(question.id, answer)}
+                >
+                  {getCharVal("a", i)}. <p className="answer-text">{answer}</p>
                 </div>
-            );
-        })}
+              );
+            })}
+          </div>
+          <div className="control-module">
+            <button
+              className="back-button"
+              onClick={() =>
+                questionNum <= 1
+                  ? quitQuiz()
+                  : navigate(`/quiz?question=${questionNum - 1}`)
+              }
+            >
+              Back
+            </button>
+            <button
+              className="next-button"
+              onClick={() =>
+                props.answers[question.id] === undefined
+                  ? null
+                  : navigate(`/quiz?question=${questionNum + 1}`)
+              }
+            >
+              Next question
+              <svg
+                width="20"
+                height="12"
+                viewBox="0 0 20 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.6343 1.01491L16.5353 4.91585L-4.27656e-05 4.91575L-4.24284e-05 6.35097L16.5353 6.35087L12.6343 10.2518L13.6492 11.2667L19.2826 5.63336L13.6492 -6.95073e-06L12.6343 1.01491Z"
+                  fill="#1C2635"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
 
-        <button onClick={() => questionNum <= 1 ? navigate("/") : navigate(`/quiz?question=${questionNum-1}`)}>Back</button>
-        <button onClick={() => props.answers[question.id] === undefined ? null : navigate(`/quiz?question=${questionNum+1}`)}>Next</button>
-    </div>
-  )
-}
+        <ProgressBar
+          curr={questionNum}
+          max={props.questionEntity.questions.length}
+        />
+      </div>
+    </Container>
+  );
+};
 
-export default Quiz
+export default Quiz;

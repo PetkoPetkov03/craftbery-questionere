@@ -1,0 +1,46 @@
+.progress-bar-wrapper {
+  position: relative;
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-bar {
+  position: absolute;
+  --size: 10vh;
+  --thickness: 8px;
+  --value: 25;
+  --primary: #aaddf3;
+  --track: #eef7fb;
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+
+  background: conic-gradient(
+    var(--primary) calc(var(--value) * 1%),
+    var(--track) 0
+  );
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--thickness)),
+    black calc(100% - var(--thickness) + 1px)
+  );
+
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--thickness)),
+    black calc(100% - var(--thickness) + 1px)
+  );
+}
+
+.load-statment {
+  position: absolute;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  z-index: 10;
+}

@@ -1,10 +1,11 @@
 import { Link } from "react-router"
 import "./landing.css"
+import Container from "~/assets/components/Container"
 
 const Landing = () => {
   return (
-    <div className="container">
-        <div className="quiz-portal">
+    <Container>
+      <div className="quiz-portal">
             <div className="title-container">
                 <h1>Build a self care routine suitable for you</h1>
                 <p>Take out test to get a personalised self care routine based on your needs.</p>
@@ -15,7 +16,7 @@ const Landing = () => {
                 search: "?question=1"
             }}>Start the quiz</Link>
         </div>
-    </div>
+    </Container>
   )
 }
 
