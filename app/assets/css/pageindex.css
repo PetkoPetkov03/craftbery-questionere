@@ -1,0 +1,18 @@
+.index-container {
+    display: flex;
+    gap: 0.2vw;
+
+}
+
+.page {
+    width: 10px;
+    height: 10px;
+    border: #E3E3E3;
+    background-color: #E3E3E3;
+    border-radius: 50%;
+}
+
+.cindex {
+    border: #5BC1ED;
+    background-color: #5BC1ED;
+}

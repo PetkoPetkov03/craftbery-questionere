@@ -51,6 +51,7 @@
     height: 100%;
 }
 
+
 .product-slider {
     display: flex;
     gap: 5vw;
@@ -87,4 +88,8 @@
     align-self: flex-end;
     width: 2.5vw;
     height: 2.5vh;
+}
+
+
+.product-display-module {
 }
