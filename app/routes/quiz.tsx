@@ -1,7 +1,7 @@
 import Quiz from "~/quiz/quiz";
 import type { Route } from "./+types/home";
 import { useEffect, useState } from "react";
-import type { AnswerdQuestion, Questions } from "~/types/questions";
+import { type AnswerdQuestion, type Questions } from "~/types/questions";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,6 +9,8 @@ export function meta({}: Route.MetaArgs) {
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
+
+
 
 const questionArr: Questions = {
     questions: [

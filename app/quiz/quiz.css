@@ -1,7 +1,7 @@
 .container-wrapper {
   display: flex !important;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .quiz-wrapper {
@@ -21,7 +21,7 @@
 }
 
 .question-title {
-  font-family: var(--ui-font);
+  font-family: var(--font-sans);
   font-size: 4dvh;
 
   color: #1c2635;

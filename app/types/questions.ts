@@ -13,4 +13,4 @@ export type AnswerdQuestion = {
     id: number,
     text: string,
     answer: string
-}
+};

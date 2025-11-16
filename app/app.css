@@ -6,9 +6,6 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-:root {
-  --ui-font: "Nunito", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
 
 html,
 body {
