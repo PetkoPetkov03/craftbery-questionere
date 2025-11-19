@@ -1,16 +1,39 @@
 .progress-bar-wrapper {
-  position: relative;
-  width: 10vh;
-  height: 10vh;
+  position: absolute;
+  width: 15vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .progress-bar-wrapper {
+    width: 14vh;
+    height: 14vh;
+    top: auto;
+    bottom: 1rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-bar-wrapper {
+    width: 12vh;
+    height: 12vh;
+  }
 }
 
 .progress-bar {
   position: absolute;
+
   --size: 10vh;
-  --thickness: 8px;
+  --thickness: calc(var(--size) * 0.08);
   --value: 25;
   --primary: #aaddf3;
   --track: #eef7fb;
@@ -41,6 +64,6 @@
   position: absolute;
   color: black;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.2vh, 1.2rem);
   z-index: 10;
 }

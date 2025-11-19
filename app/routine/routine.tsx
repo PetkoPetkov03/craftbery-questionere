@@ -291,15 +291,15 @@ const Routine = () => {
           {sliderProducts.map((product) => {
             return (
               <div
-                style={{
+                className="product-display"
+                key={product.id}
+              >
+                <div style={{
                   backgroundImage: `url(${product.images[0].src})`,
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "top",
-                }}
-                className="product-display"
-                key={product.id}
-              >
+                }} className="product-image" />
                 <svg
                   onClick={() => toggleFavorite(product.id,setFavoriteIds)}
                   className="favorite"
