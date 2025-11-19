@@ -2,55 +2,58 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  flex-wrap: wrap;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .quiz-wrapper {
   display: flex;
   gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quiz-container {
-  width: 40vw;
-  height: 30vh;
-
+  width: clamp(280px, 40vw, 600px);
+  height: auto;
   display: flex;
   flex-direction: column;
-
   justify-content: space-around;
   align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .question-title {
   font-family: var(--font-sans);
-  font-size: 4dvh;
-
+  font-size: clamp(1.2rem, 4vh, 2.5rem);
   color: #1c2635;
+  text-align: center;
 }
 
 .answer-module {
   display: grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   width: 100%;
-  max-width: 80vw;
+  max-width: 90vw;
   justify-content: center;
-  margin: 2rem;
+  margin: 2rem 0;
 }
 
 .answer-module > .answer {
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 1px solid #5bc1ed;
   border-radius: 5px;
-
   padding: 0.75rem 1.25rem;
   width: 100%;
   max-width: 260px;
   box-sizing: border-box;
-
   gap: 0.5rem;
+  text-align: center;
 }
 
 .answer-text {
@@ -65,14 +68,17 @@
 
 .control-module {
   display: flex;
-  width: 30%;
-  justify-content: space-around;
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .control-module > .back-button {
   text-decoration: underline;
   font-weight: bold;
   color: #677487;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
 }
 
 .control-module > .next-button {
@@ -81,7 +87,47 @@
   align-items: center;
   border: 1px solid #c3edff;
   border-radius: 5px;
-  height: 5vh;
-  width: 7vw;
+  height: clamp(40px, 5vh, 60px);
+  width: clamp(100px, 20vw, 180px);
   background-color: #c3edff;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.control-module > .next-button:hover {
+  background-color: #a8e4ff;
+}
+
+@media (max-width: 768px) {
+  .quiz-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .quiz-container {
+    width: 90%;
+  }
+
+  .answer-module {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .control-module {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .control-module > .next-button,
+  .control-module > .back-button {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .answer-module {
+    grid-template-columns: 1fr;
+  }
 }

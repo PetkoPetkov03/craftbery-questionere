@@ -1,10 +1,9 @@
-
 .quiz-portal {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 70vh;
     background-image: url('/billboard.jpg');
     background-color: rgba(0, 0, 0, 0.5);
@@ -13,6 +12,8 @@
     background-size: cover;
     background-position: center;
     gap: 3vh;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 .title-container {
@@ -20,29 +21,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: 15vh;
-    left: 31vw;
-    display: flex;
-    flex-direction: column;
     color: snow;
     font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    max-width: 90%;
 }
 
 .title-container > h1 {
-    font-size: xx-large;
+    font-size: clamp(1.5rem, 3vw, 3rem);
     font-weight: bolder;
-    width: 25vw;
-    text-align: center;
-
     margin-bottom: 3vh;
 }
 
 .title-container > p {
     font-weight: lighter;
-    font-size: medium;
-    text-align: center;
-    width: 25vw;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     text-decoration: underline;
+    max-width: 80%;
 }
 
 .quiz-button {
@@ -51,15 +46,33 @@
     align-items: center;
     background-color: #c3edff;
     border: 3px solid #c3edff;
-    max-width: 30vw;
-    width: 15vw;
-    height: 4.5vh;
+    width: clamp(120px, 20vw, 250px);
+    height: clamp(40px, 5vh, 60px);
     border-radius: 10px;
-    min-width: 30px;
     cursor: pointer;
     transition: 0.3s ease;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    text-align: center;
 }
 
 .quiz-button:hover {
     background-color: #a8e4ff;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 768px) {
+    .quiz-portal {
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .title-container > h1,
+    .title-container > p {
+        width: 100%;
+    }
+
+    .quiz-button {
+        width: 80%;
+        max-width: none;
+    }
 }

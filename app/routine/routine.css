@@ -5,91 +5,145 @@
 }
 
 .board {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
-    width: 100%;
-    height: 60vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image:  url("/bilboard-routine.png");
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode: darken;
-    color: snow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+  width: 100%;
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/bilboard-routine.png");
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+  color: snow;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .board > h1 {
-    font-size: 5ch;
+  font-size: clamp(1.5rem, 5ch, 3rem);
+  text-align: center;
 }
 
 .board > p {
-    font-size: large;
-    max-width: 55ch;
-    text-align: center;
-    overflow-wrap: break-word;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 55ch;
+  text-align: center;
+  overflow-wrap: break-word;
 }
 
 .board > .retake-quiz-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid snow;
-    border-radius: 10px;
-    width: 20vw;
-    height: 5vh;
-    background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid snow;
+  border-radius: 10px;
+  width: clamp(120px, 20vw, 250px);
+  height: clamp(40px, 5vh, 60px);
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.board > .retake-quiz-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .product-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5vh;
-    width: 100vw;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-
 .product-slider {
-    display: flex;
-    gap: 5vw;
-    position: relative;
-    margin:auto;
+  display: flex;
+  gap: 5vw;
+  position: relative;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .product-slider > .product-display {
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    height: 40vh;
-
-    border: 2px solid #dedede;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px 0px #dedede;
-    margin-top: -10vh;
-    position: relative;
-    z-index: 5;
-    background-color: snow;
-
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: clamp(220px, 20vw, 300px);
+  height: auto;
+  border: 2px solid #dedede;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px 0px #dedede;
+  margin-top: -10vh;
+  position: relative;
+  z-index: 5;
+  background-color: snow;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-.product-slider > .product-display > *:not(.favorite){
-    margin-top: auto;
+.product-slider > .product-display > *:not(.favorite) {
+  margin-top: auto;
 }
 
 .slider-button-back {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .product-display > .favorite {
-    align-self: flex-end;
-    width: 2.5vw;
-    height: 2.5vh;
+  align-self: flex-end;
+  width: clamp(20px, 2.5vw, 40px);
+  height: clamp(20px, 2.5vh, 40px);
 }
 
-
 .product-display-module {
+}
+
+@media (max-width: 768px) {
+  .board {
+    height: auto;
+    gap: 3vh;
+  }
+
+  .board > h1 {
+    font-size: 2rem;
+  }
+
+  .board > p {
+    max-width: 90%;
+  }
+
+  .product-slider {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .product-slider > .product-display {
+    width: 80%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .board > h1 {
+    font-size: 1.5rem;
+  }
+
+  .board > p {
+    font-size: 1rem;
+  }
+
+  .board > .retake-quiz-button {
+    width: 90%;
+  }
+
+  .product-slider > .product-display {
+    width: 95%;
+  }
 }
