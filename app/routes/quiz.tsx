@@ -5,7 +5,7 @@ import { type AnswerdQuestion, type Questions } from "~/types/questions";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Quiz" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
