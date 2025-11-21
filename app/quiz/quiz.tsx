@@ -100,28 +100,31 @@ const Quiz = (props: QuizProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const answered = Object.keys(props.answers).length;
+
     if (
-      (Object.keys(props.answers).length === 0 && questionNum > 1) ||
-      questionNum !== Object.keys(props.answers).length
+      (questionNum > answered+1)
     ) {
-      navigate("/quiz?question=1");
+      navigate("/quiz?question=1", {replace: true});
     }
-  }, [props.answers]);
+  }, [props.answers, questionNum]);
 
   return (
     <Container>
       <div className="quiz-wrapper">
-        <div className="quiz-container">
-          <ProgressBar
+        <ProgressBar
             curr={questionNum}
             max={props.questionEntity.questions.length}
           />
+        <div className="quiz-container">
+          
           <div className="question-title">{question.text}</div>
           <div className="answer-module">
             {chunkArray(question.answers).map((answerArr, i) => {
               return (
                 <div key={i} className="answer-row">
                   {answerArr.map((answer, j) => {
+                    const globalIndex = i * 4 + j
                     return (
                       <div
                         className={`answer ${
@@ -130,7 +133,7 @@ const Quiz = (props: QuizProps) => {
                         key={j}
                         onClick={() => props.updateAnswer(question.id, answer)}
                       >
-                        {getCharVal("a", j)}.{" "}
+                        {getCharVal("a", globalIndex)}.{" "}
                         <p className="answer-text">{answer}</p>
                       </div>
                     );
