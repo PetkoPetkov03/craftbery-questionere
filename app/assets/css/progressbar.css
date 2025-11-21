@@ -1,7 +1,5 @@
 .progress-bar-wrapper {
   position: absolute;
-  width: 15vh;
-  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,8 +10,6 @@
 
 @media (max-width: 768px) {
   .progress-bar-wrapper {
-    width: 14vh;
-    height: 14vh;
     top: auto;
     bottom: 1rem;
     left: 50%;
@@ -24,8 +20,6 @@
 
 @media (max-width: 480px) {
   .progress-bar-wrapper {
-    width: 12vh;
-    height: 12vh;
   }
 }
 
